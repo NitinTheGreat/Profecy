@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link'; // Import Link from Next.js
+import Link from 'next/link';
 
 import '../styles/navstyle.css';
 
@@ -15,8 +15,8 @@ const Navbar = () => {
       </Link>
       <div className="navbarRight">
         <div className="searchBox">
-          <input className="searchInput" type="text" placeholder="Search something" />
-          <button className="searchButton" href="#">
+          <input className="searchInput" type="text" placeholder="   Search something" />
+          <button className="searchButton">
             <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
               <g clipPath="url(#clip0_2_17)">
                 <g filter="url(#filter0_d_2_17)">

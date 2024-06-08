@@ -1,111 +1,113 @@
-/* public/styles/navstyle.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
 .navbar {
-    background: linear-gradient(to bottom, #080a0c, #1c232a); /* Gradient from dark grayish blue to lighter grayish blue */
+  background: linear-gradient(to bottom, #080a0c, #1c232a);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: white;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 32px;
-    margin-top: 2vh;
-    box-shadow: inset;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  .navbarLeft {
-    display: flex;
-    align-items: center;
-  }
-  
-  .circle {
-    height: 2rem;
-    width: 2rem;
-    background-color: #374151; /* Tailwind's bg-gray-700 */
-    border-radius: 50%;
-    margin-right: 1rem; /* Space between circle and name */
-  }
-  
-  .name {
-    font-size: 1.125rem; /* Tailwind's text-lg */
-    font-weight: 700; /* Tailwind's font-bold */
-  }
-  
-  .navbarRight {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4rem; /* Tailwind's space-x-6 */
-  }
-  
-  .navbarRight a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  .navbarRight a:hover {
-    color: #9ca3af; /* Tailwind's hover:text-gray-400 */
-  }
-  
-  .profile {
-    display: flex;
-    margin-right: 3vw;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .profile img {
-    border-radius: 50%;
-  }
-  .searchBox {
-    display: flex;
-    /* max-width: 230px; */
-    width: 17vw;
-    height: 40px;
-    align-items: center;
-    /* justify-content: space-between; */
-    /* gap: 8px; */
-    justify-content: center;
-    background: #2f3640;
-    border-radius: 50px;    
-    position: relative;
-  }
-  
-  .searchButton {
-    color: white;
-    position: absolute;
-    right: 8px;
-    width: 28px;
-    height: 29px;
-    border-radius: 50%;
-    background: var(--gradient-2, linear-gradient(90deg, #2AF598 0%, #009EFD 100%));
-    border: 0;
-    display: inline-block;
-    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-  }
-  /*hover effect*/
-  button:hover {
-    color: #fff;
-    background-color: #1A1A1A;
-    box-shadow: rgba(0, 0, 0, 0.5) 0 10px 20px;
-    transform: translateY(-3px);
-  }
-  /*button pressing effect*/
-  button:active {
-    box-shadow: none;
-    transform: translateY(0);
-  }
-  
-  .searchInput {
-    border: none;
-    background: none;
-    outline: none;
-    color: white;
-    font-size: 15px;
-    padding: 24px 46px 24px 26px;
-  }
-  
-  
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 32px;
+  margin-top: 2vh;
+  box-shadow: inset;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navbarLeft {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  height: 2rem;
+  width: 2rem;
+  background-color: #374151;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.name {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.navbarRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.navbarRight a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s, border-bottom 0.3s;
+}
+
+.navbarRight a:hover {
+  color: #9ca3af;
+}
+
+.navbarRight .active {
+  border-bottom: 2px solid #2af598; /* Light blue underline */
+}
+
+.profile {
+  display: flex;
+  margin-right: 3vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile img {
+  border-radius: 50%;
+}
+
+.searchBox {
+  display: flex;
+  width: 17vw;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background: #2f3640;
+  border-radius: 50px;
+  position: relative;
+}
+
+.searchButton {
+  color: white;
+  position: absolute;
+  right: 8px;
+  width: 28px;
+  height: 29px;
+  border-radius: 50%;
+  background: var(--gradient-2, linear-gradient(90deg, #2AF598 0%, #009EFD 100%));
+  border: 0;
+  display: inline-block;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+}
+
+button:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 10px 20px;
+  transform: translateY(-3px);
+}
+
+button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  color: white;
+  font-size: 15px;
+  padding: 24px 46px 24px 26px;
+}

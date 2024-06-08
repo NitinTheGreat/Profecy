@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import '../utils/fontawesome'; // Ensure this path matches where you placed the file
+import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -1,4 +1,5 @@
-.cardsanimated{
+/* CSS for the Home page */
+.cardsanimated {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,16 +7,74 @@
     margin-top: 20px;
     margin-bottom: 20px;
     gap: 7vw;
-}
-
-
-::-webkit-scrollbar{
+  }
+  
+  ::-webkit-scrollbar {
     width: 10px;
   }
-  ::-webkit-scrollbar-track{
+  ::-webkit-scrollbar-track {
     background-color: aqua;
   }
-  ::-webkit-scrollbar-thumb{
+  ::-webkit-scrollbar-thumb {
     background-color: blue;
     border-radius: 10px;
   }
+  
+  .svgs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .point {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .point img {
+    display: block; /* Ensures no extra space below the image */
+  }
+  
+  .text1 {
+    position: absolute;
+    top: 40px;
+  left: 60px;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: 600;
+    color: #ed6a6a;
+    text-align: center; /* Optional: to center align the text */
+  }
+  
+  .pencil {
+    height: auto; /* To horizontally flip the SVG */
+    position: relative; /* Added to use absolute positioning inside this container */
+  }
+  
+  .pencil img {
+    display: block; /* Ensures no extra space below the image */
+    transform: scaleX(-1);
+  }
+  
+  .text2 {
+    position: absolute;
+    top: 15px;
+    right: 40px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.7rem;
+    font-weight: 600;
+    color: #d96363;
+    text-align: center;
+    line-height: 1.5; /* Adjust line-height to control spacing between lines */
+    padding: 10px; /* Optional: for some padding inside the box */
+    box-sizing: border-box; /* To include padding in the element's total width and height */
+  }
+  

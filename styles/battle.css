@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.Heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-left: 7vw;
+    margin-top: 5vh;
+    color: rgb(172, 28, 122);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 5vw;
+    margin-left: 4vw;
+    position: relative;
+}
+
+.computercard, .playercard {
+    position: absolute;
+    top: 5vh;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.computercard {
+    left: 5vw;
+}
+
+.playercard {
+    right:5vw;
+}
+
+.text {
+    position: absolute;
+    top: 17vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text h2 {
+    font-size: 2rem;
+    color: rgb(172, 28, 122);
+    font-weight: bolder;
+}
+
+.computercard img, .playercard img {
+    height: 60vh;
+    width: auto;
+}
