@@ -1,0 +1,21 @@
+.cardsanimated{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 7vw;
+}
+
+
+::-webkit-scrollbar{
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track{
+    background-color: aqua;
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color: blue;
+    border-radius: 10px;
+  }
