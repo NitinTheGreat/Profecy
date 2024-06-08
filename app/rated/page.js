@@ -31,7 +31,7 @@
 
 import React from 'react';
 import Card from '@/components/card';
-
+import CardOld from '@/components/cardOld'
 const Rated = () => {
   const imageSrc = "/images/profile.jpg"; // Example image source
 
@@ -42,7 +42,14 @@ const Rated = () => {
   const marking = 4.2;
   const attendance = 4.0;
   const finalRating = (strictness + teaching + marking + attendance) / 4;
-
+  const professorData = {
+    professorName: 'John Doe',
+    strictness: 80,
+    teaching: 90,
+    marking: 70,
+    attendance: 85,
+    finalRating: 81.25 // This should be calculated based on the other ratings
+  };
   return (
     <>
       <Card
@@ -53,6 +60,14 @@ const Rated = () => {
         attendance={attendance}
         finalRating={finalRating}
         imageSrc={imageSrc} // Pass the image source prop
+      />
+      <CardOld
+        professorName={professorData.professorName}
+        strictness={professorData.strictness}
+        teaching={professorData.teaching}
+        marking={professorData.marking}
+        attendance={professorData.attendance}
+        finalRating={professorData.finalRating}
       />
     </>
   );

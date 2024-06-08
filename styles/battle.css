@@ -1,56 +1,85 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f0f0f0;
 }
 
 .Heading {
     font-size: 2.5rem;
     font-weight: 700;
-    margin-left: 7vw;
-    margin-top: 5vh;
+    margin-bottom: 20px;
     color: rgb(172, 28, 122);
 }
 
-.container {
+.card-section {
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
-    gap: 5vw;
-    margin-left: 4vw;
-    position: relative;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
-.computercard, .playercard {
-    position: absolute;
-    top: 5vh;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+.card {
+    width: 300px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
-.computercard {
-    left: 5vw;
+.computercard p {
+    color: black;
 }
 
-.playercard {
-    right:5vw;
+.playercard p {
+    color: white;
+}
+
+.card-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: white;
 }
 
 .text {
-    position: absolute;
-    top: 17vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
-.text h2 {
-    font-size: 2rem;
+.text button {
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 1rem;
     color: rgb(172, 28, 122);
-    font-weight: bolder;
 }
 
-.computercard img, .playercard img {
-    height: 60vh;
-    width: auto;
+.card-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.score {
+    font-size: 20px;
+    color: green;
 }

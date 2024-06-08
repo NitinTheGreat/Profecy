@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import '../styles/cardstyle.css';
 
-const Card = ({ professorName, strictness, teaching, marking, attendance, finalRating }) => {
+const CardOld = ({ professorName, strictness, teaching, marking, attendance, finalRating }) => {
   const [showProgress, setShowProgress] = useState(false);
 
   const handleMouseEnter = () => {
@@ -45,4 +45,4 @@ const Card = ({ professorName, strictness, teaching, marking, attendance, finalR
   );
 };
 
-export default Card;
+export default CardOld;
