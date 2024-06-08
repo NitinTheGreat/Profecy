@@ -3,12 +3,7 @@ import React, { useState } from 'react';
 import '../../styles/battle.css';
 
 const Battle = () => {
-  const [playerCardValues, setPlayerCardValues] = useState({
-    strictness: 0,
-    skill: 0,
-    marking: 0,
-    behavior: 0,
-  });
+  const [playerCardValues, setPlayerCardValues] = useState(null);
   const [computerCardValues, setComputerCardValues] = useState(null);
   const [score, setScore] = useState(0);
   const [round, setRound] = useState(1);
@@ -16,19 +11,28 @@ const Battle = () => {
   // Function to reveal player's card
   const revealPlayerCard = () => {
     // Generate random values for the player's card
-    const getRandomValue = () => Math.floor(Math.random() * 101); // Random value between 0 and 100
+    const getRandomValue = () => Math.floor(Math.random() * 91) + 10; // Random value between 10 and 100
     setPlayerCardValues({
       strictness: getRandomValue(),
       skill: getRandomValue(),
       marking: getRandomValue(),
       behavior: getRandomValue(),
     });
-    // Reset computer card values
-    setComputerCardValues(null);
+    // Generate random values for the computer's card
+    setComputerCardValues({
+      strictness: getRandomValue(),
+      skill: getRandomValue(),
+      marking: getRandomValue(),
+      behavior: getRandomValue(),
+    });
+    // Reset score
+    setScore(0);
+    // Reset round
+    setRound(1);
   };
 
-  // Function to handle selecting a value on computer's card
-  const handleComputerCardSelection = (value) => {
+  // Function to handle selecting a value on player's card
+  const handlePlayerCardSelection = (value) => {
     // Award points based on comparison of values
     if (playerCardValues[value] > computerCardValues[value]) {
       setScore(score + 1);
@@ -41,14 +45,6 @@ const Battle = () => {
 
     if (round < 5) {
       setRound(round + 1);
-      // Reset card details for next round
-      setPlayerCardValues({
-        strictness: 0,
-        skill: 0,
-        marking: 0,
-        behavior: 0,
-      });
-      setComputerCardValues(null);
     } else {
       // End of game
       if (score >= 3) {
@@ -57,18 +53,8 @@ const Battle = () => {
         alert('You lost the match!');
       }
     }
-  };
-
-  // Function to handle selecting a value on player's card
-  const handlePlayerCardSelection = (value) => {
-    // Generate random values for the computer's card
-    const getRandomValue = () => Math.floor(Math.random() * 101); // Random value between 0 and 100
-    setComputerCardValues({
-      strictness: getRandomValue(),
-      skill: getRandomValue(),
-      marking: getRandomValue(),
-      behavior: getRandomValue(),
-    });
+    // Reset player card values for the next round
+    setPlayerCardValues(null);
   };
 
   return (
@@ -79,28 +65,16 @@ const Battle = () => {
           {computerCardValues ? (
             <>
               <div className="card-row">
-                <label>
-                  Strictness: {computerCardValues.strictness}
-                  <input type="radio" onChange={() => handleComputerCardSelection('strictness')} />
-                </label>
+                <p>Strictness: {computerCardValues.strictness}</p>
               </div>
               <div className="card-row">
-                <label>
-                  Skill: {computerCardValues.skill}
-                  <input type="radio" onChange={() => handleComputerCardSelection('skill')} />
-                </label>
+                <p>Skill: {computerCardValues.skill}</p>
               </div>
               <div className="card-row">
-                <label>
-                  Marking: {computerCardValues.marking}
-                  <input type="radio" onChange={() => handleComputerCardSelection('marking')} />
-                </label>
+                <p>Marking: {computerCardValues.marking}</p>
               </div>
               <div className="card-row">
-                <label>
-                  Behavior: {computerCardValues.behavior}
-                  <input type="radio" onChange={() => handleComputerCardSelection('behavior')} />
-                </label>
+                <p>Behavior: {computerCardValues.behavior}</p>
               </div>
             </>
           ) : (
@@ -119,25 +93,25 @@ const Battle = () => {
               <div className="card-row">
                 <label>
                   Strictness: {playerCardValues.strictness}
-                  <input type="radio" onChange={() => handlePlayerCardSelection('strictness')} />
+                  <input type="radio" name="player" onChange={() => handlePlayerCardSelection('strictness')} />
                 </label>
               </div>
               <div className="card-row">
                 <label>
                   Skill: {playerCardValues.skill}
-                  <input type="radio" onChange={() => handlePlayerCardSelection('skill')} />
+                  <input type="radio" name="player" onChange={() => handlePlayerCardSelection('skill')} />
                 </label>
               </div>
               <div className="card-row">
                 <label>
                   Marking: {playerCardValues.marking}
-                  <input type="radio" onChange={() => handlePlayerCardSelection('marking')} />
+                  <input type="radio" name="player" onChange={() => handlePlayerCardSelection('marking')} />
                 </label>
               </div>
               <div className="card-row">
                 <label>
                   Behavior: {playerCardValues.behavior}
-                  <input type="radio" onChange={() => handlePlayerCardSelection('behavior')} />
+                  <input type="radio" name="player" onChange={() => handlePlayerCardSelection('behavior')} />
                 </label>
               </div>
             </>
@@ -146,25 +120,9 @@ const Battle = () => {
       </div>
       <div className="score" style={{ top: '40px', right: '20px' }}>
         <p>Score: {score}/5</p>
-        <div className="progress-bar" style={{ width: '80px', height: '80px', backgroundColor: 'transparent', position: 'absolute' }}>
-          <svg viewBox="0 0 36 36" className="circular-chart green">
-            <path className="circle-bg"
-              d="M18 2.0845
-              a 15.9155 15.9155 0 0 1 0 31.831
-              a 15.9155 15.9155 0 0 1 0 -31.831"
-            />
-            <path className="circle"
-              strokeDasharray={`${score * 20}, 100`}
-              d="M18 2.0845
-              a 15.9155 15.9155 0 0 1 0 31.831
-              a 15.9155 15.9155 0 0 1 0 -31.831"
-            />
-          </svg>
-        </div>
       </div>
     </>
   );
 };
 
 export default Battle;
-
