@@ -44,7 +44,7 @@ const Navbar = () => {
         <Link href="/rated">Rated Professors</Link>
         <Link href="/battle">Battle</Link>
         <Link href="/rate">Rate a Professor</Link>
-        <Link href="/help">Help</Link>
+        <Link href="/login">Login</Link>
       </div>
       <div className="profile">
         <Image

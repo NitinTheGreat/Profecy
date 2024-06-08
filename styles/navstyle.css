@@ -11,7 +11,7 @@
     margin-top: 2vh;
     box-shadow: inset;
     position: sticky;
-    top: 1vh;
+    top: 0;
     z-index: 1000;
   }
   
