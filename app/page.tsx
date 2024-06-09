@@ -17,7 +17,7 @@ export default function Home() {
           <div className="text1">Choosing Your Next Professor ?!</div>
         </div>
         <div className="text2">
-            We've got <br /> you covered <br /> 
+            We&apos;ve got <br /> you covered <br /> 
           </div>
         <div className="pencil">
           <img src="/profpencil.svg" alt="pencil" />

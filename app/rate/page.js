@@ -12,13 +12,6 @@ const Rate = () => {
       <h4>https://forms.gle/gGupXwAkxPMmuaJx9</h4> 
         </div></Link>
     </div>
-    
-
-
-
-
-
-        {/* cloud images */}
     <div className='images'>
       <img className='cloud1' src="/cloud.svg" alt="" />
       <div className='cloud2'>

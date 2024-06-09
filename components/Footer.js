@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="w-full sm:w-1/3 mb-6 sm:mb-0">
             <h2 className="text-2xl font-bold mb-4">About Us</h2>
             <p className="text-gray-400">
-              We're dedicated to providing the best service to our customers.
+              We&apos;re dedicated to providing the best service to our customers.
             </p>
           </div>
           {/* Quick Links Section */}
