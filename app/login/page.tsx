@@ -36,34 +36,44 @@ const Login = () => {
       console.error("Failed to sign in:", error);
     }
   };
+  const handleSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      
+      const response = await fetch("https://profbattle.onrender.com/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: email, password: password }),
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Failed to sign up:", error);
+    }
+  };
 
   return (
       <div className={`container ${isRegisterActive ? "active" : ""}`} id="container">
       <div className="form-container sign-up">
-        <form>
+        <form onSubmit={handleSignUp}>
           <h1>Create Account</h1>
-          <div className="social-icons">
-            <a href="#" className="icon">
-              <i className="fab fa-google-plus-g"></i>
-            </a>
-            <a href="#" className="icon">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" className="icon">
-              <i className="fab fa-github"></i>
-            </a>
-            <a href="#" className="icon">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-          </div>
-          <span>or use your email for registration</span>
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-          <button>Sign Up</button>
+          <input type="text"
+            placeholder="username"
+            onChange={(e) => setEmail(e.target.value)}
+           />
+  
+          <input onChange={(e) => setPassword(e.target.value)}
+          type="password" placeholder="Password" />
+          <button type="submit">Sign Up</button>
         </form>
       </div>
       <div className="form-container sign-in">
+
         <form onSubmit={handleSignIn}>
           <h1>Sign In</h1>
           <input

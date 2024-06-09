@@ -45,7 +45,7 @@ const Card1 = ({
               {/* Radio button for Strictness */}
               <label>
                 Strictness: {strict}
-                <input
+                <input 
                   type="radio"
                   name="parameter"
                   value="strictness"

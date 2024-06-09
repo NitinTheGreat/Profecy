@@ -31,7 +31,7 @@ const Card = ({
   };
 
   return (
-      <div className="bg-white text-white h-[450px] w-[300px] m-4 p-6">
+      <div className=" text-white h-[450px] w-[300px] m-4 p-6">
       <div className="h-full w-full bg-black px-4 border-collapse border-[6px] border-dotted border-red-700">
         <p className="text-white p-2 text-center">{name}</p>
         <div className="relative h-[70%] bg-red-700 border-t-black rounded-t-full">

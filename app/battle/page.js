@@ -130,7 +130,7 @@ const Battle = () => {
                   marks={playerCardValues.marks}
                   ap={playerCardValues.ap}
                   fit={playerCardValues.fit}
-                  imagesrc={playerCardValues.link} // Use the professor's image
+                  imagesrc={playerCardValues.image} // Use the professor's image
                   setSelectedValue={setSelectedValue}
                 />
               </form>
