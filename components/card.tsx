@@ -1,23 +1,22 @@
-'use client'
 import React, { useState } from "react";
 import "../styles/cardstyle.css";
 import Image from "next/image";
 
 const Card = ({
-  professorName,
-  strictness,
-  teaching,
-  marking,
-  attendance,
-  finalRating,
+  name,
+  strict,
+  skill,
+  marks,
+  ap,
+  fit,
   imageSrc, // New prop for image source
 }: {
-  professorName: string;
-  strictness: number;
-  teaching: number;
-  marking: number;
-  attendance: number;
-  finalRating: number;
+  name: string;
+  strict: number;
+  skill: number;
+  marks: number;
+  ap: number;
+  fit: number;
   imageSrc: string; // Type for image source
 }) => {
   const [showProgress, setShowProgress] = useState(false);
@@ -30,13 +29,10 @@ const Card = ({
     setShowProgress(false);
   };
 
-  // Calculate average progress
-  const averageRating = (strictness + teaching + marking + attendance) / 4;
-
   return (
     <div className="bg-white h-[450px] w-[300px] m-4 p-6">
       <div className="h-full w-full bg-black px-4 border-collapse border-[6px] border-dotted border-red-700">
-        <p className="text-white p-2 text-center">{professorName}</p>
+        <p className="text-white p-2 text-center">{name}</p>
         <div className="relative h-[70%] bg-red-700 border-t-black rounded-t-full">
           <Image
             src={imageSrc} // Use the prop for image source
@@ -47,17 +43,17 @@ const Card = ({
           />
         </div>
         <div className="w-full flex flex-col p-2 text-white">
-          <div className=" w-full flex flex-row text-white justify-between">
+          <div className="w-full flex flex-row text-white justify-between">
             <span>
-              <p>{strictness}</p>
-              <p>{teaching}</p>
+              <p>Strictness: {strict}</p>
+              <p>Skill: {skill}</p>
+              <p>Marks: {marks}</p>
             </span>
             <span>
-              <p>{marking}</p>
-              <p>{attendance}</p>
+              <p>AP: {ap}</p>
+              <p>FIT: {fit}</p>
             </span>
           </div>
-          <p className="w-full text-center">{finalRating}</p>
         </div>
       </div>
     </div>

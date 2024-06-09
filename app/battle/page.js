@@ -73,8 +73,10 @@ const Battle = () => {
   };
 
   return (
+    <>
+    <h1 className="Heading">Welcome to Prof Royale!</h1>
     <div className="container">
-      <h1 className="Heading">Welcome to Prof Royale!</h1>
+      
       <div className="card-section">
         <div className="card computercard">
           {computerCardValues ? (
@@ -100,9 +102,9 @@ const Battle = () => {
           {!gameOver && (
             <>
               <button onClick={revealPlayerCard}>Show Card</button>
-              <h2>VERSUS!!!</h2>
-              <h2>VERSUS!!!</h2>
-              <h2>VERSUS!!!</h2>
+              <h2 className='vs'>VERSUS!!!</h2>
+              <h2 className='vs'>VERSUS!!!</h2>
+              <h2 className='vs'>VERSUS!!!</h2>
             </>
           )}
         </div>
@@ -168,6 +170,7 @@ const Battle = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

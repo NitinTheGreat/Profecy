@@ -1,78 +1,85 @@
-// import React from 'react';
-// import Card from '@/components/card';
-// import Card from '@/components/'
-// const Rated = () => {
-//   // Dummy data for 20 professors
-//   const professors = [
-//     { name: 'Professor 1', strictness: 80, teaching: 70, marking: 90, attendance: 85, finalRating: 81.25 },
-//     { name: 'Professor 2', strictness: 70, teaching: 75, marking: 85, attendance: 80, finalRating: 77.5 },
-//     // Add more professors here
-//   ];
+'use client';
+import React, { useEffect, useState } from 'react';
+import Card from '../../components/card';
+import '../../styles/rated.css';
 
-//   return (
-//     <div>
-//       {professors.map((professor, index) => (
-//         <Card
-//           key={index}
-//           professorName={professor.name}
-//           strictness={professor.strictness}
-//           teaching={professor.teaching}
-//           marking={professor.marking}
-//           attendance={professor.attendance}
-//           finalRating={professor.finalRating}
-//         />
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Rated;
-
-
-import React from 'react';
-import Card from '@/components/card';
-import CardOld from '@/components/cardOld'
 const Rated = () => {
-  const imageSrc = "/images/profile.jpg"; // Example image source
+  const [professors, setProfessors] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [nextPage, setNextPage] = useState(null);
+  const [prevPage, setPrevPage] = useState(null);
 
-  // Define other props for the Card component
-  const professorName = "Professor John Doe";
-  const strictness = 4.5;
-  const teaching = 3.8;
-  const marking = 4.2;
-  const attendance = 4.0;
-  const finalRating = (strictness + teaching + marking + attendance) / 4;
-  const professorData = {
-    professorName: 'John Doe',
-    strictness: 80,
-    teaching: 90,
-    marking: 70,
-    attendance: 85,
-    finalRating: 81.25 // This should be calculated based on the other ratings
+  // Define fetchProfessors function
+  const fetchProfessors = async (url) => {
+    try {
+      setLoading(true);
+      const response = await fetch(url, {
+        headers: {
+          'Authorization': 'Token 1da8997b352c4e32fd3783d5ae8a6752196d87b7'
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      console.log(data);
+      setProfessors(data.results);
+      setNextPage(data.next);
+      setPrevPage(data.previous);
+    } catch (error) {
+      console.error('Failed to fetch professors:', error);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  useEffect(() => {
+    // Initial fetch
+    fetchProfessors('https://profbattle.onrender.com/faculty');
+  }, []);
+
+  const handleNextPage = () => {
+    if (nextPage) {
+      fetchProfessors(nextPage);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (prevPage) {
+      fetchProfessors(prevPage);
+    }
+  };
+
   return (
-    <>
-      <Card
-        professorName={professorName}
-        strictness={strictness}
-        teaching={teaching}
-        marking={marking}
-        attendance={attendance}
-        finalRating={finalRating}
-        imageSrc={imageSrc} // Pass the image source prop
-      />
-      <CardOld
-        professorName={professorData.professorName}
-        strictness={professorData.strictness}
-        teaching={professorData.teaching}
-        marking={professorData.marking}
-        attendance={professorData.attendance}
-        finalRating={professorData.finalRating}
-      />
-    </>
+    <div>
+      {loading && <p>Loading...</p>}
+      {!loading && (
+        <div>
+          <div className="cards-container">
+            <div className="cards-wrapper">
+              {professors.map((professor) => (
+                <Card
+                  key={professor.id}
+                  name={professor.name}
+                  strict={professor.strict}
+                  skill={professor.skill}
+                  marks={professor.marks}
+                  ap={professor.ap}
+                  fit={professor.fit}
+                  imageSrc="/images/profile.jpg" // Example image source
+                />
+              ))}
+            </div>
+          </div>
+          <div className="pagination-buttons">
+            <button className="prev-button" onClick={handlePrevPage} disabled={!prevPage}>Previous</button>
+            <button className="next-button" onClick={handleNextPage} disabled={!nextPage}>Next</button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
 export default Rated;
-
-
