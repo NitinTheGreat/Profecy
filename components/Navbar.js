@@ -1,10 +1,19 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { useEffect } from 'react';
+import { useState } from 'react';
 import '../styles/navstyle.css';
-
+import { useRouter } from 'next/navigation';
 const Navbar = () => {
+  const router= useRouter();
+  const [token, settoken] = useState(null)
+  useEffect(() => {
+    const token=localStorage.getItem('token');
+    settoken(token)
+  }, [])
+  
   return (
     <nav className="navbar">
       <Link href="/">
@@ -44,7 +53,12 @@ const Navbar = () => {
         <Link href="/rated">Rated Professors</Link>
         <Link href="/battle">Battle</Link>
         <Link href="/rate">Rate a Professor</Link>
-        <Link href="/login">Login</Link>
+        {token?<button onClick={()=>
+          {localStorage.clear()
+          router.push('/login')
+          settoken(null)
+        }
+        }>Log Out</button>:<Link href="/login">Login</Link>}
       </div>
       <div className="profile">
         <Image

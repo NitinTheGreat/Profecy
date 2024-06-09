@@ -8,6 +8,7 @@ const Card1 = ({
   marks,
   ap,
   fit,
+  imagesrc, // New prop for image source
   setSelectedValue, // onSubmit prop for form submission
 }: {
   name: string;
@@ -16,6 +17,7 @@ const Card1 = ({
   marks: number;
   ap: number;
   fit: number;
+  imagesrc: string; // Type for image source
   setSelectedValue: (value: string) => void; // Type for onSubmit prop
 }) => {
   // Function to handle radio button selection
@@ -29,8 +31,8 @@ const Card1 = ({
         <p className="text-white p-2 text-center">{name}</p>
         <div className="relative h-[70%] bg-red-700 border-t-black rounded-t-full">
           {/* Image component */}
-          <Image
-            src="/images/profile.jpg"
+          <img
+            src={imagesrc}
             alt="Professor"
             width={300}
             height={300}

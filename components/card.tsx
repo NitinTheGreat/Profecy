@@ -35,7 +35,7 @@ const Card = ({
       <div className="h-full w-full bg-black px-4 border-collapse border-[6px] border-dotted border-red-700">
         <p className="text-white p-2 text-center">{name}</p>
         <div className="relative h-[70%] bg-red-700 border-t-black rounded-t-full">
-          <Image
+          <img
             src={imageSrc} // Use the prop for image source
             alt="Professor"
             width={300}

@@ -25,6 +25,8 @@ const Rated = () => {
 
       const data = await response.json();
       // console.log(data);
+      setNextPage(data.next);
+      setPrevPage(data.previous);
       setProfessors(data.results);
     } catch (error) {
       console.error('Failed to fetch professors:', error);
@@ -93,7 +95,7 @@ const Rated = () => {
                   marks={professor.marks}
                   ap={professor.ap}
                   fit={professor.fit}
-                  imageSrc="/images/profile.jpg" // Example image source
+                  imageSrc={professor.link} // Example image source
                 />
               ))}
             </div>

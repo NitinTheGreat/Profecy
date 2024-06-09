@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styles from '../../styles/battle.module.css';
 import Card from '../../components/card';
 import Card1 from '../../components/card1';
-// import ProtectedRoute from '../../components/Protectedcomp';
+import ProtectedRoute from '../../components/Protectedcomp';
 
 const Battle = () => {
   const [playerCardValues, setPlayerCardValues] = useState(null);
@@ -51,7 +51,7 @@ const Battle = () => {
         marks: professor.marks,
         ap: professor.ap,
         fit: professor.fit,
-        image: professor.image, // Assuming the API returns an image URL in the 'image' field
+        image: professor.link, // Assuming the API returns an image URL in the 'image' field
       };
     } else {
       console.error('Professors data is empty');
@@ -130,7 +130,7 @@ const Battle = () => {
                   marks={playerCardValues.marks}
                   ap={playerCardValues.ap}
                   fit={playerCardValues.fit}
-                  imageSrc={playerCardValues.image} // Use the professor's image
+                  imagesrc={playerCardValues.link} // Use the professor's image
                   setSelectedValue={setSelectedValue}
                 />
               </form>
@@ -154,5 +154,5 @@ const Battle = () => {
   );
 };
 
-// export default ProtectedRoute(Battle);
-export default Battle;
+export default ProtectedRoute(Battle);
+// export default Battle;

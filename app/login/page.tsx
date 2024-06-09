@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import "../../styles/login.css";
-
+import { useRouter } from "next/navigation";
 const Login = () => {
   const [isRegisterActive, setIsRegisterActive] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const router = useRouter();
   const handleRegisterClick = () => {
     setIsRegisterActive(true);
   };
@@ -30,6 +30,7 @@ const Login = () => {
       }
       const data = await response.json();
       localStorage.setItem("token", data.token);
+      router.push("/rated");
       console.log(data);
     } catch (error) {
       console.error("Failed to sign in:", error);
