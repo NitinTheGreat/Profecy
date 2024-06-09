@@ -9,7 +9,7 @@ const Rate = () => {
     <div className='rate'>
         <h2>POUR YOUR HEART OUT HERE</h2>
        <Link href={"https://forms.gle/gGupXwAkxPMmuaJx9"}target="_blank"> <div className='rate-box'>
-      <h4>https://forms.gle/gGupXwAkxPMmuaJx9</h4> 
+      <h4>https://forms.gle/GVnxQzFVbGniLSf3A</h4> 
         </div></Link>
     </div>
     <div className='images'>
