@@ -95,9 +95,9 @@ const Battle = () => {
     } else {
       setGameOver(true);
       if (score >= 3) {
-        alert('Congratulations! You won the match!');
+        toast.success('Woooohoooo... You won the match!!!');
       } else {
-        alert('You lost the match!');
+        toast.error('Better Luck Next time!!!');
       }
     }
     setSelectedValue(null);
