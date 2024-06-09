@@ -20,6 +20,7 @@ const Card1 = ({
   imagesrc: string; // Type for image source
   setSelectedValue: (value: string) => void; // Type for onSubmit prop
 }) => {
+  console.log(imagesrc)
   // Function to handle radio button selection
   const handleSelection = (value: string) => {
     setSelectedValue(value);

@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import '../utils/fontawesome'; // Ensure this path matches where you placed the file
 import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
-
+import 'react-toastify/dist/ReactToastify.css';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

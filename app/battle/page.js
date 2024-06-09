@@ -4,7 +4,7 @@ import styles from '../../styles/battle.module.css';
 import Card from '../../components/card';
 import Card1 from '../../components/card1';
 import ProtectedRoute from '../../components/Protectedcomp';
-
+import { ToastContainer, toast } from 'react-toastify';
 const Battle = () => {
   const [playerCardValues, setPlayerCardValues] = useState(null);
   const [computerCardValues, setComputerCardValues] = useState(null);
@@ -33,6 +33,7 @@ const Battle = () => {
 
       const data = await response.json();
       console.log(data);
+      // toast.success('Data fetched successfully');
       setProfessors(data);
     } catch (error) {
       console.error('Failed to fetch professors:', error);
@@ -76,11 +77,15 @@ const Battle = () => {
     if (playerCardValues && selectedValue) {
       if (playerCardValues[selectedValue] > computerValues[selectedValue]) {
         setScore(score + 1);
-        alert('You won this round!');
+        // alert('You won this round!');
+        toast.success('You won this round!');
+        
       } else if (playerCardValues[selectedValue] < computerValues[selectedValue]) {
-        alert('You lost this round!');
+        // alert('You lost this round!');
+        toast.error('You lost this round!');
       } else {
-        alert('It\'s a tie!');
+        // alert('It\'s a tie!');
+        toast.info('It\'s a tie!');
       }
     }
 

@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import '../styles/navstyle.css';
 import { useRouter } from 'next/navigation';
+import { ToastContainer } from 'react-toastify';
 const Navbar = () => {
   const router= useRouter();
   const [token, settoken] = useState(null)
@@ -16,6 +17,7 @@ const Navbar = () => {
   
   return (
     <nav className="navbar">
+      <ToastContainer />
       <Link href="/">
         <div className="navbarLeft">
           <img  className="circle" src="/logo.svg" alt="" />
@@ -50,6 +52,7 @@ const Navbar = () => {
             </svg>
           </button>
         </div> */}
+
         <Link href="/rated">Rated Professors</Link>
         <Link href="/battle">Battle</Link>
         <Link href="/rate">Rate a Professor</Link>

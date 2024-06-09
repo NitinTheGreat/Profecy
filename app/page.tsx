@@ -3,6 +3,7 @@ import Image from "next/image";
 import { GoogleGeminiEffectDemo } from "./gemini";
 import { GlowingStarsBackgroundCardPreview } from "./glowingcard";
 import "../styles/home.css";
+import 'react-toastify/dist/ReactToastify.css';
 // import '../styles/global.css';
 // import '../utils/fontawesome';
 import "../utils/fontawesome"
