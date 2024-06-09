@@ -13,9 +13,10 @@ const Rated = () => {
   const fetchProfessors = async (url) => {
     try {
       setLoading(true);
+      const token = localStorage.getItem('token');
       const response = await fetch(url, {
         headers: {
-          'Authorization': 'Token 3aac15a84d899645635de6d6429d49faf4cbebef'
+          'Authorization': 'Token ' + token,
         }
       });
       if (!response.ok) {
@@ -23,16 +24,14 @@ const Rated = () => {
       }
 
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setProfessors(data.results);
-      setNextPage(data.next);
-      setPrevPage(data.previous);
     } catch (error) {
       console.error('Failed to fetch professors:', error);
     } finally {
       setLoading(false);
-    }
-  };
+    }
+  };
 
   useEffect(() => {
     // Initial fetch
@@ -109,5 +108,5 @@ const Rated = () => {
   );
 };
 
-// export default ProtectedRoute(Rated);
-export default Rated;
+export default ProtectedRoute(Rated);
+// export default Rated;

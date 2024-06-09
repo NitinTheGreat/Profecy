@@ -15,42 +15,29 @@ const Login = () => {
     setIsRegisterActive(false);
   };
 
-  const handleSignIn = () => {
-    try{
-      fetch("https://profbattle.onrender.com/token", {
+  const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      const response = await fetch("https://profbattle.onrender.com/token", {
         method: "POST",
-        body: JSON.stringify({ username:email, password:password }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          localStorage.setItem("token", data.token);
-        });
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: email, password: password }),
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      console.log(data);
     } catch (error) {
-      console.error("Failed to fetch professors:", error);
-    }
-  };
-  const handleSignUp = () => {
-    try{
-      fetch("https://profbattle.onrender.com/register", {
-        method: "POST",
-        body: JSON.stringify({ username:email, password:password }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          localStorage.setItem("token", data.token);
-        });
-    } catch (error) {
-      console.error("Failed to fetch professors:", error);
+      console.error("Failed to sign in:", error);
     }
   };
 
   return (
-      <div
-        className={`container ${isRegisterActive ? "active" : ""}`}
-        id="container"
-      >
+      <div className={`container ${isRegisterActive ? "active" : ""}`} id="container">
       <div className="form-container sign-up">
         <form>
           <h1>Create Account</h1>
@@ -72,7 +59,7 @@ const Login = () => {
           <input type="text" placeholder="Name" />
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <button className="SignUpBtn">Sign Up</button>
+          <button>Sign Up</button>
         </form>
       </div>
       <div className="form-container sign-in">
@@ -88,8 +75,8 @@ const Login = () => {
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-       
-          <button className="signbtn">Sign In</button>
+          <a href="#">Forget Your Password?</a>
+          <button type="submit">Sign In</button>
         </form>
       </div>
       <div className="toggle-container">

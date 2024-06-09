@@ -8,8 +8,8 @@ export default function ProtectedRoute(Component: any) {
     const router  = useRouter();
     useEffect(() => {
       const user = localStorage.getItem("token");
-      const accessToken = (user) ? JSON.parse(user).state.accessToken : null;
-      if (!accessToken) {
+     
+      if (!user) {
       router.push("/login");
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps

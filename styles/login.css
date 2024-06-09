@@ -30,7 +30,7 @@ body{
     min-height: 480px;
     margin-left: 23vw;
     margin-top: 6vh;
-    color:#CAEA45
+    
     
 }
 
@@ -46,7 +46,7 @@ body{
 }
 
 .container a{
-    color: #d9fa00;
+    color: black;
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px;

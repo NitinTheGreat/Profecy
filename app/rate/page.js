@@ -31,4 +31,5 @@ const Rate = () => {
   );
 }
 
-export default ProtectedRoute(Rate);
+// export default ProtectedRoute(Rate);
+export default Rate;
