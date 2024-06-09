@@ -1,6 +1,6 @@
-'use client';
-import React, { useState } from 'react';
-import '../../styles/battle.css';
+'use client'
+import React, { useState, useEffect } from 'react';
+import styles from '../../styles/battle.module.css';
 import Card from '../../components/card';
 import Card1 from '../../components/card1';
 
@@ -11,46 +11,65 @@ const Battle = () => {
   const [round, setRound] = useState(1);
   const [gameOver, setGameOver] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
+  const [professors, setProfessors] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  // Function to reveal player's card
+  useEffect(() => {
+    fetchProfessors('https://profbattle.onrender.com/faculty/random');
+  }, []);
+
+  const fetchProfessors = async (url) => {
+    try {
+      setLoading(true);
+      const response = await fetch(url, {
+        headers: {
+          'Authorization': 'Token 1da8997b352c4e32fd3783d5ae8a6752196d87b7'
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      console.log(data);
+      setProfessors(data);
+    } catch (error) {
+      console.error('Failed to fetch professors:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getRandomProfessorValues = () => {
+    if (professors.length > 0) {
+      const professor = professors[Math.floor(Math.random() * professors.length)];
+      return {
+        strictness: professor.strict,
+        skill: professor.skill,
+        marking: professor.marks,
+        behavior: professor.fit,
+        ap: professor.ap,
+      };
+    } else {
+      console.error('Professors data is empty');
+      return null;
+    }
+  };
+
   const revealPlayerCard = () => {
     setComputerCardValues(null);
-    setPlayerCardValues(null);
-    getPlayerCardValues();
+    setPlayerCardValues(getRandomProfessorValues());
   };
 
-  const getPlayerCardValues = () => {
-    const getRandomValue = () => Math.floor(Math.random() * 91) + 10; // Random value between 10 and 100
-    setPlayerCardValues({
-      strictness: getRandomValue(),
-      skill: getRandomValue(),
-      marking: getRandomValue(),
-      behavior: getRandomValue(),
-      ap: getRandomValue(),
-    });
-  };
-
-  // Function to handle selecting a value on player's card
   const handlePlayerCardSelection = (value) => {
     setSelectedValue(value);
   };
 
-  // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    const getRandomValue = () => Math.floor(Math.random() * 91) + 10;
-    const computerCardValues = {
-      strictness: getRandomValue(),
-      skill: getRandomValue(),
-      marking: getRandomValue(),
-      behavior: getRandomValue(),
-      ap: getRandomValue(),
-    };
-    setComputerCardValues(computerCardValues);
+    const computerCardValues = getRandomProfessorValues();
 
-    // Ensure playerCardValues is not null
     if (playerCardValues && selectedValue) {
-      // Award points based on comparison of values
       if (playerCardValues[selectedValue] > computerCardValues[selectedValue]) {
         setScore(score + 1);
         alert('You won this round!');
@@ -61,11 +80,9 @@ const Battle = () => {
       }
     }
 
-    // Increment round
     if (round < 5) {
       setRound(round + 1);
     } else {
-      // End of game
       setGameOver(true);
       if (score >= 3) {
         alert('Congratulations! You won the match!');
@@ -73,15 +90,15 @@ const Battle = () => {
         alert('You lost the match!');
       }
     }
-    setSelectedValue(null); // Reset selected value
+    setSelectedValue(null);
   };
 
   return (
     <>
-      <h1 className="Heading">Welcome to Prof Royale!</h1>
-      <div className="container">
-        <div className="card-section">
-          <div className="card computercard">
+      <h1 className={styles.Heading}>Welcome to Prof Royale!</h1>
+      <div className={styles.container}>
+        <div className={styles['card-section']}>
+          <div className={`${styles.card} ${styles.computercard} ${styles['text-white']}`}>
             {computerCardValues && (
               <Card
                 name="Computer"
@@ -94,15 +111,8 @@ const Battle = () => {
               />
             )}
           </div>
-          <div className="text">
-            {!gameOver && (
-              <>
-                <button onClick={revealPlayerCard}>Show Card</button>
-                <h2 className="vs">VERSUS!!!</h2>
-              </>
-            )}
-          </div>
-          <div className="card playercard">
+          <h2 className={styles.vs}>VERSUS!!!</h2>
+          <div className={styles.card} style={{ right: '20vw' }}>
             {playerCardValues && (
               <form onSubmit={handleSubmit}>
                 <Card1
@@ -112,14 +122,21 @@ const Battle = () => {
                   marks={playerCardValues.marking}
                   ap={playerCardValues.ap}
                   fit={playerCardValues.behavior}
-                  onSubmit={handleSubmit}
+                  setSelectedValue={setSelectedValue}
                 />
               </form>
             )}
           </div>
         </div>
+        <div className={styles.text}>
+          {!gameOver && (
+            <>
+              <button onClick={revealPlayerCard}>Show Card</button>
+            </>
+          )}
+        </div>
         {gameOver && (
-          <div className="score">
+          <div className={styles.score}>
             <p>Final Score: {score}/5</p>
           </div>
         )}

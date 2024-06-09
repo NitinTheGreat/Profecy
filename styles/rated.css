@@ -5,7 +5,13 @@
     flex-wrap: wrap;
     justify-content: center;
 }
-
+.searchBox {
+    position: fixed;
+    top: 14vh;
+    right: 50px;
+    z-index: 100;
+  }
+  
 .cards-wrapper {
     max-width: 1200px; /* Adjust as needed */
     width: 100%;

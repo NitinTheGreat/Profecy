@@ -1,5 +1,7 @@
+
 import React, { useState } from "react";
-import "../styles/cardstyle.css";
+// import styles from "../styles/cardstyle.module.css";
+import styles from "../styles/cardstyle.module.css";
 import Image from "next/image";
 
 const Card = ({
@@ -29,8 +31,9 @@ const Card = ({
     setShowProgress(false);
   };
 
+
   return (
-    <div className="bg-white h-[450px] w-[300px] m-4 p-6">
+      <div className={`${styles.bgWhite} ${styles.text} text-white h-[450px] w-[300px] m-4 p-6`}>
       <div className="h-full w-full bg-black px-4 border-collapse border-[6px] border-dotted border-red-700">
         <p className="text-white p-2 text-center">{name}</p>
         <div className="relative h-[70%] bg-red-700 border-t-black rounded-t-full">
@@ -43,9 +46,9 @@ const Card = ({
           />
         </div>
         <div className="w-full flex flex-col p-2 text-white">
-          <div className="w-full flex flex-row text-white justify-between">
+          <div className="w-full flex flex-row justify-between">
             <span>
-              <p>Strictness: {strict}</p>
+              <p className="text-pink-600 ">Strictness: {strict}</p>
               <p>Skill: {skill}</p>
               <p>Marks: {marks}</p>
             </span>

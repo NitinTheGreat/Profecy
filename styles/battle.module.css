@@ -1,0 +1,100 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: rgb(185, 223, 16);
+    position: relative;
+  }
+  /* .wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: rgb(185, 223, 16);
+    position: relative;
+  } */
+  .Heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: rgb(228, 8, 8);
+  }
+  
+  .card-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px; /* Increased spacing between sections */
+  }
+  
+  /* .card {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    /* background-color: #16c639; Darker gray background */
+    /* padding: 20px;
+    box-shadow: 0 0 20px rgba(101, 28, 140, 0.2); /* White shadow for contrast */
+    /* border-radius: 10px; */
+  /* } */ 
+
+  .card{
+    /* width: 300px; */
+    display: flex;
+    /* flex-direction: row; */
+    background-color: #16c639;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(101, 28, 140, 0.2);
+    border-radius: 10px;
+  }
+  
+  .computercard p {
+    color: white;
+  }
+  
+  .playercard p {
+    color: white;
+  }
+  
+  .card-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #ed0202; /* Darker gray placeholder */
+  }
+  
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .text button {
+    padding: 10px 20px;
+    background-color: #9000f7; /* Darker gray button */
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px; /* Increased spacing between button and heading */
+    cursor: pointer;
+    font-size: 1rem;
+    color: white;
+  }
+  
+  .card-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .score {
+    font-size: 20px;
+    color: green;
+  }
+  
+
+  

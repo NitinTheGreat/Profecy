@@ -27,19 +27,19 @@ export default function Home() {
 
       <div className="cardsanimated">
         <GlowingStarsBackgroundCardPreview
-          title="Title 1"
-          description="Description 1."
-          href="/about"
+          title="Rated Professors"
+          description="Click here to see the list of all professors"
+          href="/rated"
         />
         <GlowingStarsBackgroundCardPreview
-          title="Title 2"
-          description="Description 2"
-          href="/test"
+          title="Prof Royale"
+          description="Click Here to Play Prof Royale"
+          href="/battle"
         />
         <GlowingStarsBackgroundCardPreview
-          title="Title 3"
-          description="Description 3"
-          href="/test"
+          title="Rate a Professor"
+          description="Click here to rate a professor"
+          href="/rate"
         />
       </div>
       <Footer/>

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Image from "next/image";
 
@@ -8,7 +9,7 @@ const Card1 = ({
   marks,
   ap,
   fit,
-  onSubmit, // onSubmit prop for form submission
+  setSelectedValue, // onSubmit prop for form submission
 }: {
   name: string;
   strict: number;
@@ -16,9 +17,8 @@ const Card1 = ({
   marks: number;
   ap: number;
   fit: number;
-  onSubmit: () => void; // Type for onSubmit prop
+  setSelectedValue: (value: string) => void; // Type for onSubmit prop
 }) => {
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
 
   // Function to handle radio button selection
   const handleSelection = (value: string) => {
@@ -26,7 +26,7 @@ const Card1 = ({
   };
 
   return (
-    <div className="bg-white h-[450px] w-[300px] m-4 p-6">
+    <div className=" h-[450px] w-[300px] m-4 p-6">
       <div className="h-full w-full bg-black px-4 border-collapse border-[6px] border-dotted border-red-700">
         <p className="text-white p-2 text-center">{name}</p>
         <div className="relative h-[70%] bg-red-700 border-t-black rounded-t-full">
@@ -41,8 +41,7 @@ const Card1 = ({
         </div>
         <div className="w-full flex flex-col p-2 text-white">
           {/* Form for radio buttons */}
-          <form onSubmit={onSubmit}>
-            <div className="w-full flex flex-row text-white justify-between">
+            <div className="w-full flex flex text-white justify-between">
               <span>
                 {/* Radio button for Strictness */}
                 <label>
@@ -51,7 +50,6 @@ const Card1 = ({
                     type="radio"
                     name="parameter"
                     value="strictness"
-                    checked={selectedValue === "strictness"}
                     onChange={() => handleSelection("strictness")}
                   />
                 </label>
@@ -62,7 +60,6 @@ const Card1 = ({
                     type="radio"
                     name="parameter"
                     value="skill"
-                    checked={selectedValue === "skill"}
                     onChange={() => handleSelection("skill")}
                   />
                 </label>
@@ -73,7 +70,6 @@ const Card1 = ({
                     type="radio"
                     name="parameter"
                     value="marks"
-                    checked={selectedValue === "marks"}
                     onChange={() => handleSelection("marks")}
                   />
                 </label>
@@ -86,7 +82,6 @@ const Card1 = ({
                     type="radio"
                     name="parameter"
                     value="ap"
-                    checked={selectedValue === "ap"}
                     onChange={() => handleSelection("ap")}
                   />
                 </label>
@@ -97,15 +92,14 @@ const Card1 = ({
                     type="radio"
                     name="parameter"
                     value="fit"
-                    checked={selectedValue === "fit"}
                     onChange={() => handleSelection("fit")}
                   />
                 </label>
               </span>
             </div>
             {/* Submit button */}
-            <button type="submit">Submit</button>
-          </form>
+            <button type="submit" style={{ backgroundColor: 'gray', color: 'white', padding: '10px 20px', borderRadius: '5px', cursor: 'pointer', border: 'none' , marginTop: '15px'}}>Submit</button>
+
         </div>
       </div>
     </div>

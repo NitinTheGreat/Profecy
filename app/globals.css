@@ -5,11 +5,10 @@
 /* globals.css */
 
 /* globals.css */
-
 body {
-  background-color: black;
+  background-color: rgb(41, 36, 36);
   background-image: 
-    radial-gradient(circle 400px at 50% 300px, #fbfbfb36, #000), 
+    radial-gradient(circle 300px at 50% 300px, #fbfbfb36, #000), 
     linear-gradient(to right, #4f4f4f2e 1px, transparent 1px), 
     linear-gradient(to bottom, #8080800a 1px, transparent 1px);
   background-size: auto, 14px 24px, 14px 24px;

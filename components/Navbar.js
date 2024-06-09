@@ -14,7 +14,7 @@ const Navbar = () => {
         </div>
       </Link>
       <div className="navbarRight">
-        <div className="searchBox">
+        {/* <div className="searchBox">
           <input className="searchInput" type="text" placeholder="   Search something" />
           <button className="searchButton">
             <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
@@ -40,7 +40,7 @@ const Navbar = () => {
               </defs>
             </svg>
           </button>
-        </div>
+        </div> */}
         <Link href="/rated">Rated Professors</Link>
         <Link href="/battle">Battle</Link>
         <Link href="/rate">Rate a Professor</Link>
