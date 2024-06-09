@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../../components/card';
 import '../../styles/rated.css';
-
+import ProtectedRoute from '../../components/Protectedcomp'
 const Rated = () => {
   const [professors, setProfessors] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,7 +15,7 @@ const Rated = () => {
       setLoading(true);
       const response = await fetch(url, {
         headers: {
-          'Authorization': 'Token 1da8997b352c4e32fd3783d5ae8a6752196d87b7'
+          'Authorization': 'Token 3aac15a84d899645635de6d6429d49faf4cbebef'
         }
       });
       if (!response.ok) {
@@ -109,4 +109,5 @@ const Rated = () => {
   );
 };
 
+// export default ProtectedRoute(Rated);
 export default Rated;

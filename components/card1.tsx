@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Image from "next/image";
 
@@ -19,7 +18,6 @@ const Card1 = ({
   fit: number;
   setSelectedValue: (value: string) => void; // Type for onSubmit prop
 }) => {
-
   // Function to handle radio button selection
   const handleSelection = (value: string) => {
     setSelectedValue(value);
@@ -40,66 +38,76 @@ const Card1 = ({
           />
         </div>
         <div className="w-full flex flex-col p-2 text-white">
-          {/* Form for radio buttons */}
-            <div className="w-full flex flex text-white justify-between">
-              <span>
-                {/* Radio button for Strictness */}
-                <label>
-                  Strictness: {strict}
-                  <input
-                    type="radio"
-                    name="parameter"
-                    value="strictness"
-                    onChange={() => handleSelection("strictness")}
-                  />
-                </label>
-                {/* Radio button for Skill */}
-                <label>
-                  Skill: {skill}
-                  <input
-                    type="radio"
-                    name="parameter"
-                    value="skill"
-                    onChange={() => handleSelection("skill")}
-                  />
-                </label>
-                {/* Radio button for Marks */}
-                <label>
-                  Marks: {marks}
-                  <input
-                    type="radio"
-                    name="parameter"
-                    value="marks"
-                    onChange={() => handleSelection("marks")}
-                  />
-                </label>
-              </span>
-              <span>
-                {/* Radio button for AP */}
-                <label>
-                  AP: {ap}
-                  <input
-                    type="radio"
-                    name="parameter"
-                    value="ap"
-                    onChange={() => handleSelection("ap")}
-                  />
-                </label>
-                {/* Radio button for FIT */}
-                <label>
-                  FIT: {fit}
-                  <input
-                    type="radio"
-                    name="parameter"
-                    value="fit"
-                    onChange={() => handleSelection("fit")}
-                  />
-                </label>
-              </span>
-            </div>
-            {/* Submit button */}
-            <button type="submit" style={{ backgroundColor: 'gray', color: 'white', padding: '10px 20px', borderRadius: '5px', cursor: 'pointer', border: 'none' , marginTop: '15px'}}>Submit</button>
-
+          <div className="w-full flex flex-row text-white justify-between">
+            <span>
+              {/* Radio button for Strictness */}
+              <label>
+                Strictness: {strict}
+                <input
+                  type="radio"
+                  name="parameter"
+                  value="strictness"
+                  onChange={() => handleSelection("strictness")}
+                />
+              </label>
+            </span>
+          </div>
+          <div className="flex flex-row justify-between">
+            <label>
+              Skill: {skill}
+              <input
+                type="radio"
+                name="parameter"
+                value="skill"
+                onChange={() => handleSelection("skill")}
+              />
+            </label>
+            {/* Radio button for Marks */}
+            <label>
+              Marks: {marks}
+              <input
+                type="radio"
+                name="parameter"
+                value="marks"
+                onChange={() => handleSelection("marks")}
+              />
+            </label>
+          </div>
+          <div className="flex flex-row justify-between">
+            <label>
+              AP: {ap}
+              <input
+                type="radio"
+                name="parameter"
+                value="ap"
+                onChange={() => handleSelection("ap")}
+              />
+            </label>
+            {/* Radio button for FIT */}
+            <label>
+              FIT: {fit}
+              <input
+                type="radio"
+                name="parameter"
+                value="fit"
+                onChange={() => handleSelection("fit")}
+              />
+            </label>
+          </div>
+          <button
+            type="submit"
+            style={{
+              backgroundColor: "gray",
+              color: "white",
+              padding: "10px 20px",
+              borderRadius: "5px",
+              cursor: "pointer",
+              border: "none",
+              marginTop: "15px",
+            }}
+          >
+            Submit
+          </button>
         </div>
       </div>
     </div>

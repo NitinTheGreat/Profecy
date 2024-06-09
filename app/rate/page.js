@@ -1,6 +1,8 @@
+'use client';
 import React from 'react';
 import '../../styles/rate.css';
 import Link from 'next/link';
+import ProtectedRoute from '../../components/Protectedcomp'
 const Rate = () => {
   return (
     <>
@@ -29,4 +31,4 @@ const Rate = () => {
   );
 }
 
-export default Rate;
+export default ProtectedRoute(Rate);

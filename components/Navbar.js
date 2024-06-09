@@ -9,7 +9,7 @@ const Navbar = () => {
     <nav className="navbar">
       <Link href="/">
         <div className="navbarLeft">
-          <div className="circle">Logo</div>
+          <img  className="circle" src="/logo.svg" alt="" />
           <span className="name">Profecy</span>
         </div>
       </Link>

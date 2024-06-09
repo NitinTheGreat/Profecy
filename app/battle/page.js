@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styles from '../../styles/battle.module.css';
 import Card from '../../components/card';
 import Card1 from '../../components/card1';
+// import ProtectedRoute from '../../components/Protectedcomp';
 
 const Battle = () => {
   const [playerCardValues, setPlayerCardValues] = useState(null);
@@ -23,7 +24,7 @@ const Battle = () => {
       setLoading(true);
       const response = await fetch(url, {
         headers: {
-          'Authorization': 'Token 1da8997b352c4e32fd3783d5ae8a6752196d87b7'
+          'Authorization': 'Token 3aac15a84d899645635de6d6429d49faf4cbebef'
         }
       });
       if (!response.ok) {
@@ -44,11 +45,13 @@ const Battle = () => {
     if (professors.length > 0) {
       const professor = professors[Math.floor(Math.random() * professors.length)];
       return {
+        name: professor.name,
         strictness: professor.strict,
         skill: professor.skill,
-        marking: professor.marks,
-        behavior: professor.fit,
+        marks: professor.marks,
         ap: professor.ap,
+        fit: professor.fit,
+        image: professor.image, // Assuming the API returns an image URL in the 'image' field
       };
     } else {
       console.error('Professors data is empty');
@@ -67,13 +70,14 @@ const Battle = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const computerCardValues = getRandomProfessorValues();
+    const computerValues = getRandomProfessorValues();
+    setComputerCardValues(computerValues);
 
     if (playerCardValues && selectedValue) {
-      if (playerCardValues[selectedValue] > computerCardValues[selectedValue]) {
+      if (playerCardValues[selectedValue] > computerValues[selectedValue]) {
         setScore(score + 1);
         alert('You won this round!');
-      } else if (playerCardValues[selectedValue] < computerCardValues[selectedValue]) {
+      } else if (playerCardValues[selectedValue] < computerValues[selectedValue]) {
         alert('You lost this round!');
       } else {
         alert('It\'s a tie!');
@@ -98,30 +102,35 @@ const Battle = () => {
       <h1 className={styles.Heading}>Welcome to Prof Royale!</h1>
       <div className={styles.container}>
         <div className={styles['card-section']}>
-          <div className={`${styles.card} ${styles.computercard} ${styles['text-white']}`}>
+          <div className={`w-[330px] h-[500px] rounded-3xl bg-gray-500 ${styles.computercard} ${styles["text-white"]}`}>
             {computerCardValues && (
               <Card
-                name="Computer"
+                name={computerCardValues.name}
                 strict={computerCardValues.strictness}
                 skill={computerCardValues.skill}
-                marks={computerCardValues.marking}
+                marks={computerCardValues.marks}
                 ap={computerCardValues.ap}
-                fit={computerCardValues.behavior}
-                imageSrc="/images/computer.jpg"
+                fit={computerCardValues.fit}
+                imageSrc={computerCardValues.image} // Use the professor's image
               />
             )}
           </div>
-          <h2 className={styles.vs}>VERSUS!!!</h2>
-          <div className={styles.card} style={{ right: '20vw' }}>
+          <div className={styles.vs}>
+            <h2>VERSUS!!!</h2>
+            <h2>VERSUS!!!</h2>
+            <h2>VERSUS!!!</h2>
+          </div>
+          <div className="w-[330px] h-[500px] rounded-3xl bg-gray-500">
             {playerCardValues && (
               <form onSubmit={handleSubmit}>
                 <Card1
-                  name="Player"
+                  name={playerCardValues.name}
                   strict={playerCardValues.strictness}
                   skill={playerCardValues.skill}
-                  marks={playerCardValues.marking}
+                  marks={playerCardValues.marks}
                   ap={playerCardValues.ap}
-                  fit={playerCardValues.behavior}
+                  fit={playerCardValues.fit}
+                  imageSrc={playerCardValues.image} // Use the professor's image
                   setSelectedValue={setSelectedValue}
                 />
               </form>
@@ -145,4 +154,5 @@ const Battle = () => {
   );
 };
 
+// export default ProtectedRoute(Battle);
 export default Battle;
