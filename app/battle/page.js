@@ -1,6 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import '../../styles/battle.css';
+import Card from '../../components/card';
+import Card1 from '../../components/card1';
 
 const Battle = () => {
   const [playerCardValues, setPlayerCardValues] = useState(null);
@@ -24,6 +26,7 @@ const Battle = () => {
       skill: getRandomValue(),
       marking: getRandomValue(),
       behavior: getRandomValue(),
+      ap: getRandomValue(),
     });
   };
 
@@ -41,6 +44,7 @@ const Battle = () => {
       skill: getRandomValue(),
       marking: getRandomValue(),
       behavior: getRandomValue(),
+      ap: getRandomValue(),
     };
     setComputerCardValues(computerCardValues);
 
@@ -74,102 +78,52 @@ const Battle = () => {
 
   return (
     <>
-    <h1 className="Heading">Welcome to Prof Royale!</h1>
-    <div className="container">
-      
-      <div className="card-section">
-        <div className="card computercard">
-          {computerCardValues ? (
-            <>
-              <div className="card-row">
-                <p>Strictness: {computerCardValues.strictness}</p>
-              </div>
-              <div className="card-row">
-                <p>Skill: {computerCardValues.skill}</p>
-              </div>
-              <div className="card-row">
-                <p>Marking: {computerCardValues.marking}</p>
-              </div>
-              <div className="card-row">
-                <p>Behavior: {computerCardValues.behavior}</p>
-              </div>
-            </>
-          ) : (
-            <div className="card-placeholder"></div>
-          )}
+      <h1 className="Heading">Welcome to Prof Royale!</h1>
+      <div className="container">
+        <div className="card-section">
+          <div className="card computercard">
+            {computerCardValues && (
+              <Card
+                name="Computer"
+                strict={computerCardValues.strictness}
+                skill={computerCardValues.skill}
+                marks={computerCardValues.marking}
+                ap={computerCardValues.ap}
+                fit={computerCardValues.behavior}
+                imageSrc="/images/computer.jpg"
+              />
+            )}
+          </div>
+          <div className="text">
+            {!gameOver && (
+              <>
+                <button onClick={revealPlayerCard}>Show Card</button>
+                <h2 className="vs">VERSUS!!!</h2>
+              </>
+            )}
+          </div>
+          <div className="card playercard">
+            {playerCardValues && (
+              <form onSubmit={handleSubmit}>
+                <Card1
+                  name="Player"
+                  strict={playerCardValues.strictness}
+                  skill={playerCardValues.skill}
+                  marks={playerCardValues.marking}
+                  ap={playerCardValues.ap}
+                  fit={playerCardValues.behavior}
+                  onSubmit={handleSubmit}
+                />
+              </form>
+            )}
+          </div>
         </div>
-        <div className="text">
-          {!gameOver && (
-            <>
-              <button onClick={revealPlayerCard}>Show Card</button>
-              <h2 className='vs'>VERSUS!!!</h2>
-              <h2 className='vs'>VERSUS!!!</h2>
-              <h2 className='vs'>VERSUS!!!</h2>
-            </>
-          )}
-        </div>
-        <div className="card playercard">
-          {playerCardValues && (
-            <form onSubmit={handleSubmit}>
-              <div className="card-row">
-                <label>
-                  Strictness: {playerCardValues.strictness}
-                  <input
-                    type="radio"
-                    name="player"
-                    value="strictness"
-                    checked={selectedValue === 'strictness'}
-                    onChange={() => handlePlayerCardSelection('strictness')}
-                  />
-                </label>
-              </div>
-              <div className="card-row">
-                <label>
-                  Skill: {playerCardValues.skill}
-                  <input
-                    type="radio"
-                    name="player"
-                    value="skill"
-                    checked={selectedValue === 'skill'}
-                    onChange={() => handlePlayerCardSelection('skill')}
-                  />
-                </label>
-              </div>
-              <div className="card-row">
-                <label>
-                  Marking: {playerCardValues.marking}
-                  <input
-                    type="radio"
-                    name="player"
-                    value="marking"
-                    checked={selectedValue === 'marking'}
-                    onChange={() => handlePlayerCardSelection('marking')}
-                  />
-                </label>
-              </div>
-              <div className="card-row">
-                <label>
-                  Behavior: {playerCardValues.behavior}
-                  <input
-                    type="radio"
-                    name="player"
-                    value="behavior"
-                    checked={selectedValue === 'behavior'}
-                    onChange={() => handlePlayerCardSelection('behavior')}
-                  />
-                </label>
-              </div>
-              <button type="submit">Submit</button>
-            </form>
-          )}
-        </div>
+        {gameOver && (
+          <div className="score">
+            <p>Final Score: {score}/5</p>
+          </div>
+        )}
       </div>
-      {gameOver && (
-        <div className="score">
-          <p>Final Score: {score}/5</p>
-        </div>
-      )}
-    </div>
     </>
   );
 };
