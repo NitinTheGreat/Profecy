@@ -21,10 +21,11 @@ const Battle = () => {
 
   const fetchProfessors = async (url) => {
     try {
+      const token= localStorage.getItem('token');
       setLoading(true);
       const response = await fetch(url, {
         headers: {
-          'Authorization': 'Token 3aac15a84d899645635de6d6429d49faf4cbebef'
+          'Authorization': 'Token '+ token,
         }
       });
       if (!response.ok) {
